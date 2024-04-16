@@ -35,20 +35,37 @@ time = data['datetime'] + pd.DateOffset(years=124, months = 4, days=12)
 
 print(time)
 
-#plot the data
-fig, ax = plt.subplots()
-ax.plot(time, data['co2'], label='co2')
+# Create a figure and a set of subplots
+# co2 data is on the 1st axis
+fig, (ax1, ax2) = plt.subplots(2,1) 
+ax1.plot(time, data['co2'], label='co2')
 
 # Set major ticks format
-ax.xaxis.set_major_locator(mdates.DayLocator())
-ax.xaxis.set_major_formatter(mdates.DateFormatter('%A'))
-ax.tick_params(axis='x', which='major', labelsize=12)
+ax1.xaxis.set_major_locator(mdates.DayLocator())
+ax1.xaxis.set_major_formatter(mdates.DateFormatter('%A'))
+ax1.tick_params(axis='x', which='major', labelsize=12,pad=20)
 # Set minor ticks format
-ax.xaxis.set_minor_locator(mdates.HourLocator(interval=3))
-ax.xaxis.set_minor_formatter(mdates.DateFormatter('%H:%M'))
+ax1.xaxis.set_minor_locator(mdates.HourLocator(interval=3))
+ax1.xaxis.set_minor_formatter(mdates.DateFormatter('%H:%M'))
 
 # Rotate and align the tick labels so they look better
 #plt.xticks(rotation=45)
-fig.autofmt_xdate(rotation=45, ha='right', which='both')
+import matplotlib.pyplot as plt
+
+# add labels
+ax1.set_xlabel('Time', fontsize=16)
+ax1.set_ylabel('CO2', fontsize=16)
+
+ax2.plot(time, data['tvoc'], label='tvoc')
+ax2.set_xlabel('Time', fontsize=16)
+ax2.set_ylabel('tvoc', fontsize=16)
+
+# Set major ticks format
+ax2.xaxis.set_major_locator(mdates.DayLocator())
+ax2.xaxis.set_major_formatter(mdates.DateFormatter('%A'))
+ax2.tick_params(axis='x', which='major', labelsize=12, pad=20)
+# Set minor ticks format
+ax2.xaxis.set_minor_locator(mdates.HourLocator(interval=3))
+ax2.xaxis.set_minor_formatter(mdates.DateFormatter('%H:%M'))
 
 plt.show()
