@@ -63,9 +63,10 @@ ax2.set_ylabel('tvoc', fontsize=16)
 # Set major ticks format
 ax2.xaxis.set_major_locator(mdates.DayLocator())
 ax2.xaxis.set_major_formatter(mdates.DateFormatter('%A'))
-ax2.tick_params(axis='x', which='major', labelsize=12, pad=20)
+ax2.tick_params(axis='x', which='major', labelsize=12, pad=20, rotation=45)
 # Set minor ticks format
-ax2.xaxis.set_minor_locator(mdates.HourLocator(interval=3))
-ax2.xaxis.set_minor_formatter(mdates.DateFormatter('%H:%M'))
+ax2.xaxis.set_minor_locator(mdates.HourLocator(interval=6))
+ax2.xaxis.set_minor_formatter(mdates.DateFormatter('%H'))
+ax2.tick_params(axis='x', which='minor', labelsize=9, rotation=45)
 
 plt.show()
