@@ -37,12 +37,12 @@ print(time)
 
 # Create a figure and a set of subplots
 # co2 data is on the 1st axis
-fig, (ax1, ax2) = plt.subplots(2,1) 
+fig, (ax1, ax2) = plt.subplots(2,1, tight_layout=True) 
 ax1.plot(time, data['co2'], label='co2')
 
 # Set major ticks format
 ax1.xaxis.set_major_locator(mdates.DayLocator())
-ax1.xaxis.set_major_formatter(mdates.DateFormatter('%A'))
+ax1.xaxis.set_major_formatter(mdates.DateFormatter('%a'))
 ax1.tick_params(axis='x', which='major', labelsize=12,pad=20)
 # Set minor ticks format
 ax1.xaxis.set_minor_locator(mdates.HourLocator(interval=3))
